@@ -148,3 +148,7 @@ Contribuições são bem-vindas! Sinta-se livre para abrir issues e pull request
 ---
 
 **Desenvolvido com ❤️ para Saúde Pública**
+
+### Fontes e Créditos
+
+O chatbot foi desenvolvido com base no documento "Protocolo Clínico e Diretrizes Terapêuticas para Atenção Integral às Pessoas com Infecções Sexualmente Transmissíveis (IST)". Este documento orienta a prática clínica e oferece diretrizes terapêuticas essenciais para o tratamento de ISTs.
