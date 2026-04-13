@@ -137,10 +137,6 @@ P.U.L.S.E/
 - ✅ Dados armazenados em **banco de dados vetorial local**
 - ✅ Compatível com **LGPD** e regulamentações de saúde
 
-## 📝 Licença
-
-[Adicionar informação de licença]
-
 ## 👤 Autor
 
 **Nicolas** - [@NicolasDev-web](https://github.com/NicolasDev-web)
