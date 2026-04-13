@@ -11,7 +11,6 @@ class HealthPDFExtractor:
         self.processed_path.mkdir(parents=True, exist_ok=True)
 
     def extract_text_from_pdf(self, filename: str):
-        """Extrai texto de um PDF e salva como .txt na pasta processed."""
         file_path = self.raw_path / filename
         output_path = self.processed_path / f"{file_path.stem}_extracted.txt"
         

@@ -111,31 +111,26 @@ with st.sidebar:
     st.caption("VectorDB: `ChromaDB`")
     st.caption("Privacidade: `100% Local`")
 
-# --- Área Principal do Chat ---
 st.title("P.U.L.S.E.")
 st.markdown("<p style='color: gray; font-size: 1.1rem; margin-top: -15px; margin-bottom: 30px;'>Como posso te ajudar com os protocolos de saúde hoje?</p>", unsafe_allow_html=True)
 
-# Renderiza o histórico de mensagens com ícones minimalistas
 for msg in st.session_state.mensagens:
-    avatar = "👤" if msg["role"] == "user" else "🩺" # Ícone elegante para a IA
+    avatar = "👤" if msg["role"] == "user" else "🩺" 
     with st.chat_message(msg["role"], avatar=avatar):
         st.markdown(msg["content"])
 
 # --- Input do Usuário ---
-pergunta_usuario = st.chat_input("Pergunte algo sobre os documentos vetorizados...")
+pergunta_usuario = st.chat_input("Pergunte algo sobre os documentos")
 
 if pergunta_usuario:
-    # Exibe pergunta do usuário
     with st.chat_message("user", avatar="👤"):
         st.markdown(pergunta_usuario)
     st.session_state.mensagens.append({"role": "user", "content": pergunta_usuario})
 
-    # Exibe resposta da IA com Spinner limpo
     with st.chat_message("assistant", avatar="🩺"):
         with st.spinner("Analisando contexto..."):
             resposta_completa = motor_ia.invoke({"input": pergunta_usuario})
             texto_resposta = resposta_completa["answer"]
             st.markdown(texto_resposta)
     
-    # Salva no histórico
     st.session_state.mensagens.append({"role": "assistant", "content": texto_resposta})
