@@ -1,0 +1,11 @@
+# Ignore arquivos de dados e processados
+data/
+rag_saude_mvp/data/
+*.pdf
+*.txt
+*.log
+__pycache__/
+*.pyc
+venv/
+.env
+.DS_Store
