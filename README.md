@@ -60,7 +60,6 @@ A aplicação segue uma adaptação da **Medallion Architecture** para fluxos de
 
 ```bash
 git clone https://github.com/seu-usuario/P.U.L.S.E.git
-cd P.U.L.S.E/rag_saude_mvp
 ```
 
 ### Passo 2: Criar e Ativar Ambiente Virtual
