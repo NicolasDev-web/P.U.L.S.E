@@ -1,4 +1,4 @@
-# P.U.L.S.E. - Pipeline Único de Leitura e Segmentação Epidemiológica 🩺
+# P.U.L.S.E. - Pipeline Unique for Reading and Epidemiological Segmentation 🩺
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![LangChain](https://img.shields.io/badge/LangChain-121212?style=for-the-badge&logo=chainlink&logoColor=white)
@@ -6,63 +6,63 @@
 ![Ollama](https://img.shields.io/badge/Ollama-000000?style=for-the-badge&logo=ollama&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=Streamlit&logoColor=white)
 
-## 📋 Sobre o Projeto
+## 📋 About the Project
 
-O **P.U.L.S.E.** é uma solução de **RAG (Retrieval-Augmented Generation) Local** desenvolvida especificamente para o nicho de Saúde Pública. O sistema permite a ingestão, vetorização e consulta inteligente de documentos clínicos e epidemiológicos com total privacidade e segurança.
+**P.U.L.S.E.** is a **Local RAG (Retrieval-Augmented Generation)** solution developed specifically for the Public Health niche. The system enables ingestion, vectorization, and consultation of clinical documents with precision and security, all running locally without sending data to the cloud.
 
-## 🎯 O Problema de Negócio
+## 🎯 The Business Problem
 
-No setor de saúde, a precisão e a privacidade são inegociáveis. Profissionais enfrentam desafios significativos:
+In the healthcare sector, accuracy and privacy are non-negotiable. Professionals face significant challenges:
 
-- ❌ Dificuldade em consultar diretrizes clínicas de centenas de páginas em tempo real
-- ❌ Dependência de soluções cloud que comprometem a privacidade dos dados
-- ❌ Falta de ferramentas que combinem IA com segurança local
+- ❌ Difficulty consulting clinical guidelines spanning hundreds of pages in real-time
+- ❌ Dependence on cloud solutions that compromise data privacy
+- ❌ Lack of tools combining AI with local security
 
-O **P.U.L.S.E.** resolve esses problemas oferecendo uma solução de IA local, segura e eficiente.
+**P.U.L.S.E.** solves these problems by offering a local, secure, and efficient AI solution.
 
-## 🧠 Arquitetura da Solução
+## 🧠 Solution Architecture
 
-A aplicação segue uma adaptação da **Medallion Architecture** para fluxos de IA:
+The application follows an adaptation of the **Medallion Architecture** for AI workflows:
 
-| Camada | Etapa | Descrição |
-|--------|-------|-----------|
-| **Bronze** | Ingestão | Monitoramento automático de diretórios para novos PDFs e CSVs |
-| **Silver** | Processamento | Limpeza de dados com Pandas e segmentação semântica (Chunking) com LangChain |
-| **Gold** | Vetorização | Geração de embeddings via HuggingFace e persistência em banco vetorial local ChromaDB |
-| **API** | Recuperação & Resposta | Pipeline RAG orquestrado pelo LangChain consultando o modelo **Phi-3 (Microsoft)** via Ollama |
+| Layer | Stage | Description |
+|-------|-------|-------------|
+| **Bronze** | Ingestion | Automatic monitoring of directories for new PDFs and CSVs |
+| **Silver** | Processing | Data cleaning with Pandas and semantic segmentation (Chunking) with LangChain |
+| **Gold** | Vectorization | Embedding generation via HuggingFace and persistence in local vector database ChromaDB |
+| **API** | Retrieval & Response | RAG pipeline orchestrated by LangChain consulting the **Phi-3 (Microsoft)** model via Ollama |
 
-## 🛠️ Stack Tecnológica
+## 🛠️ Technology Stack
 
-### Engenharia de Dados
+### Data Engineering
 - Python 3.x
 - Pandas
 - Pathlib
 - PDFPlumber
 
-### Inteligência Artificial
+### Artificial Intelligence
 - **LangChain** (Chains & Retrieval)
 - **HuggingFace Embeddings**
 - **Ollama** (Llama 3 / Phi-3)
 
-### Banco de Dados
-- **ChromaDB** (Vector Store Local)
+### Database
+- **ChromaDB** (Local Vector Store)
 
 ### Interface & Frontend
-- **Streamlit** com CSS customizado (UI estilo Claude)
+- **Streamlit** with custom CSS (Claude-style UI)
 
-## 🚀 Guia de Instalação
+## 🚀 Installation Guide
 
-### Pré-requisitos
+### Prerequisites
 - Python 3.8+
 - Git
 
-### Passo 1: Clonar o Repositório
+### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/seu-usuario/P.U.L.S.E.git
+git clone https://github.com/your-username/P.U.L.S.E.git
 ```
 
-### Passo 2: Criar e Ativar Ambiente Virtual
+### Step 2: Create and Activate Virtual Environment
 
 ```bash
 python -m venv venv
@@ -74,80 +74,80 @@ python -m venv venv
 source venv/bin/activate
 ```
 
-### Passo 3: Instalar Dependências
+### Step 3: Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Passo 4: Configurar o Motor de IA (Ollama)
+### Step 4: Configure AI Engine (Ollama)
 
-1. Baixe o Ollama em [ollama.com](https://ollama.com)
-2. No terminal, execute:
+1. Download Ollama from [ollama.com](https://ollama.com)
+2. In the terminal, execute:
 
 ```bash
 ollama run phi3
 ```
 
-### Passo 5: Executar o Pipeline
+### Step 5: Run the Pipeline
 
-1. Coloque seus PDFs em `data/raw/`
-2. Execute o pipeline principal:
+1. Place your PDFs in `data/raw/`
+2. Run the main pipeline:
 
 ```bash
 python main_pipeline.py
 ```
 
-3. Inicie a aplicação Streamlit:
+3. Start the Streamlit application:
 
 ```bash
 python -m streamlit run src/app/chat.py
 ```
 
-A aplicação estará disponível em `http://localhost:8501`
+The application will be available at `http://localhost:8501`
 
-## 📁 Estrutura do Projeto
+## 📁 Project Structure
 
 ```
 P.U.L.S.E/
 ├── data/
-│   ├── raw/              # PDFs e CSVs para ingestão
-│   ├── processed/        # Dados processados
-│   └── vectors/          # Banco de vetores (ChromaDB)
+│   ├── raw/              # PDFs and CSVs for ingestion
+│   ├── processed/        # Processed data
+│   └── vectors/          # Vector database (ChromaDB)
 ├── src/
-│   ├── pipeline/         # Pipeline de ETL
-│   ├── rag/              # Lógica RAG
-│   └── app/              # Interface Streamlit
-├── main_pipeline.py      # Script principal
-├── requirements.txt      # Dependências
+│   ├── pipeline/         # ETL pipeline
+│   ├── rag/              # RAG logic
+│   └── app/              # Streamlit interface
+├── main_pipeline.py      # Main script
+├── requirements.txt      # Dependencies
 └── README.md
 ```
 
-## 💡 Como Usar
+## 💡 How to Use
 
-1. **Adicionar Documentos:** Coloque PDFs na pasta `data/raw/`
-2. **Processar:** Execute `python main_pipeline.py`
-3. **Consultar:** Use a interface Streamlit para fazer perguntas
-4. **Obter Respostas:** O sistema retorna respostas baseadas nos seus documentos
+1. **Add Documents:** Place PDFs in the `data/raw/` folder
+2. **Process:** Run `python main_pipeline.py`
+3. **Query:** Use the Streamlit interface to ask questions
+4. **Get Answers:** The system returns responses based on your documents
 
-## 🔒 Segurança & Privacidade
+## 🔒 Security & Privacy
 
-- ✅ Toda a IA roda **localmente** (sem envio de dados à nuvem)
-- ✅ Dados armazenados em **banco de dados vetorial local**
-- ✅ Compatível com **LGPD** e regulamentações de saúde
+- ✅ All AI runs **locally** (no data sent to the cloud)
+- ✅ Data stored in **local vector database**
+- ✅ Compatible with **LGPD** and healthcare regulations
 
-## 👤 Autor
+## 👤 Author
 
 **Nicolas** - [@NicolasDev-web](https://github.com/NicolasDev-web)
 
-## 🤝 Contribuições
+## 🤝 Contributing
 
-Contribuições são bem-vindas! Sinta-se livre para abrir issues e pull requests.
+Contributions are welcome! Feel free to open issues and pull requests.
 
 ---
 
-**Desenvolvido com ❤️ para Saúde Pública**
+**Developed with ❤️ for Public Health**
 
-### Fontes e Créditos
+### Sources and Credits
 
-O chatbot foi desenvolvido com base no documento "Protocolo Clínico e Diretrizes Terapêuticas para Atenção Integral às Pessoas com Infecções Sexualmente Transmissíveis (IST)". Este documento orienta a prática clínica e oferece diretrizes terapêuticas essenciais para o tratamento de ISTs.
+The chatbot was developed based on the document "Clinical Protocol and Therapeutic Guidelines for Comprehensive Care of People with Sexually Transmitted Infections (STI)". This document...
